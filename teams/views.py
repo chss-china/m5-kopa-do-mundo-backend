@@ -48,3 +48,32 @@ class TeamAPIView(APIView):
             except ImpossibleTitlesError as e:
                 return Response({"error": e.message}, status=400)
         return Response(serializer.errors, status=400)
+    
+
+class TeamDetailView(APIView):
+    def get(self, request, pk):
+        try:
+            team = Team.objects.get(pk=pk)
+            serializer = TeamSerializer(team)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except ObjectDoesNotExist:
+            return Response({"message": "Team not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    def patch(self, request, pk):
+        try:
+            team = Team.objects.get(pk=pk)
+            serializer = TeamSerializer(team, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except ObjectDoesNotExist:
+            return Response({"message": "Team not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    def delete(self, request, pk):
+        try:
+            team = Team.objects.get(pk=pk)
+            team.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except ObjectDoesNotExist:
+            return Response({"message": "Team not found"}, status=status.HTTP_404_NOT_FOUND)
