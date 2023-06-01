@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-# Create your models here.
+
 class Team(models.Model):
     name = models.CharField(max_length=30)
     titles = models.IntegerField(null=True,default=0)
