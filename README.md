@@ -1,14 +1,41 @@
 # M5 - Kopa do Mundo
-##Descrição
-Eu desenvolvi uma API usando Python e Django para organizar um campeonato de futebol. A API possui várias rotas que permitem cadastrar, listar, filtrar, atualizar e deletar características.
-No endpoint /api/teams/com o verbo HTTP POST, é possível cadastrar uma nova seleção, fornecendo informações como nome, número de títulos, artilheiro principal, código FIFA e ano da primeira participação na copa.
-Com o verbo HTTP GETno mesmo endpoint, é possível listar todas as escadas cadastradas. Já no endpoint /api/teams/<team_id>/com o verbo HTTP GET, é possível filtrar uma seleção específica pelo seu ID.
-Para atualizar uma seleção, utilize-se o endpoint /api/teams/<team_id>/com o verbo HTTP PATCH, onde é possível modificar os atributos da seleção desejada.
-No endpoint /api/teams/<team_id>/com o verbo HTTP DELETE, é possível excluir uma seleção específica pelo seu ID.
-Além disso, implementei de forma personalizada para tratar erros específicos. Por exemplo, se para proteger um número de títulos negativos, a exceção NegativeTitlesErroré garantida. Se o ano da primeira participação na copa não for válido, uma exceção InvalidYearCupErroré lançada. E se o número de títulos garantidos pelo impossível com base no ano da primeira participação, é lançada a exceção ImpossibleTitlesError.
-Também criei uma chamada de model Team com os atributos desejados, como nome, número de títulos, artilheiro principal, código FIFA e ano da primeira participação na copa. Além disso, sobrescrevi o método __repr__para exibir informações sobre a seleção no formato desejado.
-No geral, uma API que desenvolve usando Python e Django oferece funcionalidades para registrar, listar, filtrar, atualizar e deletar características, e também possui características personalizadas para lidar com erros específicos.
-Foi Implementando alguns testes e pude passar em todos
+## Descrição
+Descrição da API de Campeonato de Futebol
+Eu desenvolvi uma API usando Python e Django para organizar um campeonato de futebol. Uma API possui várias rotas que permitem:
+
+# Cadastrar Equipes
+Terminal: /api/teams/(HTTP POST)
+Parâmetros: Nome, Número de Títulos, Artilheiro Principal, Código FIFA, Ano da Primeira Participação na Copa
+# Listar Equipes
+Terminal: /api/teams/(HTTP GET)
+Retornar Lista de todas as equipes cadastradas
+# Filtrar Equipe Específica
+Terminal: /api/teams/<team_id>/(HTTP GET)
+Parâmetro: <team_id>- ID da equipe desejada
+Retornar Detalhes da equipe específica
+ # Atualizar Equipe
+Endpoint: /api/teams/<team_id>/(HTTP PATCH)
+Parâmetro: <team_id>- ID da equipe a ser atualizado
+Modificações: Atributos da equipe a serem atualizados
+# Deletar Equipe
+Terminal: /api/teams/<team_id>/(HTTP EXCLUIR)
+Parâmetro: <team_id>- ID da equipe a ser excluído
+Tratamento Personalizado de Erros
+Exceção: NegativeTitlesErrorpara proteger números de títulos negativos
+Exceção: InvalidYearCupErrorpara anos inválidos de primeira participação na Copa
+Exceção: ImpossibleTitlesErrorpara títulos impossíveis com base no ano da primeira participação
+# Modelo de Dados
+Criação: Classe Teamcom atletas como nome, número de títulos, artilheiro principal, código FIFA e ano da primeira participação na Copa
+Sobrescrita: Método __repr__para exibir informações da equipe no formato desejado
+Funcionalidades Gerais
+Registro, listagem, filtragem, atualização e exclusão de equipes
+Recursos personalizados para lidar com erros específicos
+# Testes Implementados
+Implementação de testes unitários
+Testes abrangem diferentes funcionalidades da API
+Todos os testes foram aprovados
+Isso resume a descrição de sua API desenvolvida em Python e Django para um campeonato de futebol, suas funcionalidades e recursos personalizados para tratamento de erros.
+
 ## Como rodar os testes localmente
 
 - Verifique se os pacotes pytest e/ou pytest-testdox estão instalados globalmente em seu sistema:
