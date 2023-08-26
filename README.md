@@ -1,4 +1,40 @@
 # M5 - Kopa do Mundo
+## Descrição
+Descrição da API de Campeonato de Futebol
+Eu desenvolvi uma API usando Python e Django para organizar um campeonato de futebol. Uma API possui várias rotas que permitem:
+
+# Cadastrar Equipes
+1. Terminal: /api/teams/(HTTP POST)
+2. Parâmetros: Nome, Número de Títulos, Artilheiro Principal, Código FIFA, Ano da Primeira Participação na Copa
+# Listar Equipes
+1 .Terminal: /api/teams/(HTTP GET)
+2 .Retornar Lista de todas as equipes cadastradas
+# Filtrar Equipe Específica
+1. Terminal: /api/teams/<team_id>/(HTTP GET)
+2.Parâmetro: <team_id>- ID da equipe desejada
+3.Retornar Detalhes da equipe específica
+ # Atualizar Equipe
+1. Endpoint: /api/teams/<team_id>/(HTTP PATCH)
+2. Parâmetro: <team_id>- ID da equipe a ser atualizado
+3. Modificações: Atributos da equipe a serem atualizados
+# Deletar Equipe
+1. Terminal: /api/teams/<team_id>/(HTTP EXCLUIR)
+2. Parâmetro: <team_id>- ID da equipe a ser excluído
+3. Tratamento Personalizado de Erros
+4. Exceção: NegativeTitlesErrorpara proteger números de títulos negativos
+5. Exceção: InvalidYearCupErrorpara anos inválidos de primeira participação na Copa
+6. Exceção: ImpossibleTitlesErrorpara títulos impossíveis com base no ano da primeira participação
+# Modelo de Dados
+1. Criação: Classe Teamcom atletas como nome, número de títulos, artilheiro principal, código FIFA e ano da primeira participação na Copa
+2. Sobrescrita: Método __repr__para exibir informações da equipe no formato desejado
+3. Funcionalidades Gerais
+4. Registro, listagem, filtragem, atualização e exclusão de equipes
+5. Recursos personalizados para lidar com erros específicos
+# Testes Implementados
+1. Implementação de testes unitários
+2. Testes abrangem diferentes funcionalidades da API
+3. Todos os testes foram aprovados
+4. Isso resume a descrição de sua API desenvolvida em Python e Django para um campeonato de futebol, suas funcionalidades e recursos personalizados para tratamento de erros.
 
 ## Como rodar os testes localmente
 
